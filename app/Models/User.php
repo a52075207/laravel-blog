@@ -47,6 +47,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Role');
     }
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
     public function isAdmin() {
         if($this->role->name == 'Admin') {
             return true;

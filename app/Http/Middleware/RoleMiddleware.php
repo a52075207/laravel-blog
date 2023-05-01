@@ -22,7 +22,7 @@ class RoleMiddleware
         $user = Auth::user();
 
         if ($user->isAdmin()) {
-            return redirect()->indended('/admin');
+            return redirect()->intended('/admin');
         }
         return $next($request);
     }
