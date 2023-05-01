@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
     {
         $posts = Post::latest()->get();
@@ -36,10 +42,15 @@ class PostController extends Controller
         // $post->body = request('body');
         // $post->save();
 
-        Post::create([
-            'title' => request('title'),
-            'body'  => request('body')
-        ]);
+        auth()->user()->publish(
+            new Post(request(['title', 'body']))
+        );
+
+        // Post::create([
+        //     'title'   => request('title'),
+        //     'body'    => request('body'),
+        //     'user_id' => auth()->id()
+        // ]);
 
         return redirect('/posts');
     }

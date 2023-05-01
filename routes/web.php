@@ -67,4 +67,6 @@ Route::post('/register', [App\Http\Controllers\RegistrationController::class, 's
 
 Route::get('/login', [App\Http\Controllers\SessionsController::class, 'create']);
 
+Route::post('/login', [App\Http\Controllers\SessionsController::class, 'store']);
+
 Route::get('/logout', [App\Http\Controllers\SessionsController::class, 'destroy']);

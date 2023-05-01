@@ -22,9 +22,8 @@
                 @endforeach
             </ul>
         </div>
+        <hr>
     @endif
-
-    <hr>
 
     {{-- Add a comment --}}
     <div class="carf">
